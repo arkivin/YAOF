@@ -121,7 +121,7 @@ jobs:
         gzip -d *.gz && exit 0
         gzip --best *.img
         ls -Ahl
-        sha256sum openwrt*r1p-lts* | tee R1P-LTS-GC404-$(date +%Y-%m-%d)-${{ env.latest_release }}.sha256sum
+        sha256sum openwrt*r1*lts* | tee R1P-LTS-GC404-$(date +%Y-%m-%d)-${{ env.latest_release }}.sha256sum
         zip R1P-LTS-GC404-$(date +%Y-%m-%d)-${{ env.latest_release }}-ext4.zip *r1p-lts*ext4*
         zip R1P-LTS-GC404-$(date +%Y-%m-%d)-${{ env.latest_release }}-sfs.zip *r1p-lts*squashfs*
         ls -Ahl
