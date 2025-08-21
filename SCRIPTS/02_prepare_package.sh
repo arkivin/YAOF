@@ -8,8 +8,8 @@ sed -i 's/Os/O2/g' include/target.mk
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 # 移除 SNAPSHOT 标签
-sed -i 's,-SNAPSHOT,,g' include/version.mk
-sed -i 's,-SNAPSHOT,,g' package/base-files/image-config.in
+#sed -i 's,-SNAPSHOT,,g' include/version.mk
+#sed -i 's,-SNAPSHOT,,g' package/base-files/image-config.in
 sed -i '/CONFIG_BUILDBOT/d' include/feeds.mk
 sed -i 's/;)\s*\\/; \\/' include/feeds.mk
 # Nginx
@@ -134,14 +134,14 @@ cp -rf ../PATCH/kernel/btf/* ./target/linux/generic/hack-6.6/
 
 ### 获取额外的基础软件包 ###
 # 更换为 ImmortalWrt Uboot 以及 Target
-rm -rf ./target/linux/rockchip
-cp -rf ../immortalwrt_24/target/linux/rockchip ./target/linux/rockchip
-cp -rf ../PATCH/kernel/rockchip/* ./target/linux/rockchip/patches-6.6/
+#rm -rf ./target/linux/rockchip
+#cp -rf ../immortalwrt_24/target/linux/rockchip ./target/linux/rockchip
+#cp -rf ../PATCH/kernel/rockchip/* ./target/linux/rockchip/patches-6.6/
 #wget https://github.com/immortalwrt/immortalwrt/raw/refs/tags/v23.05.4/target/linux/rockchip/patches-5.15/991-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch -O target/linux/rockchip/patches-6.6/991-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch
-rm -rf package/boot/{rkbin,uboot-rockchip,arm-trusted-firmware-rockchip}
-cp -rf ../immortalwrt_24/package/boot/uboot-rockchip ./package/boot/uboot-rockchip
-cp -rf ../immortalwrt_24/package/boot/arm-trusted-firmware-rockchip ./package/boot/arm-trusted-firmware-rockchip
-sed -i '/REQUIRE_IMAGE_METADATA/d' target/linux/rockchip/armv8/base-files/lib/upgrade/platform.sh
+#rm -rf package/boot/{rkbin,uboot-rockchip,arm-trusted-firmware-rockchip}
+#cp -rf ../immortalwrt_24/package/boot/uboot-rockchip ./package/boot/uboot-rockchip
+#cp -rf ../immortalwrt_24/package/boot/arm-trusted-firmware-rockchip ./package/boot/arm-trusted-firmware-rockchip
+#sed -i '/REQUIRE_IMAGE_METADATA/d' target/linux/rockchip/armv8/base-files/lib/upgrade/platform.sh
 # Disable Mitigations
 sed -i 's,rootwait,rootwait mitigations=off,g' target/linux/rockchip/image/default.bootscript
 sed -i 's,@CMDLINE@ noinitrd,noinitrd mitigations=off,g' target/linux/x86/image/grub-efi.cfg
