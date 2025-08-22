@@ -46,6 +46,7 @@ sbwfw876_repo="https://github.com/sbwml/openwrt_helloworld"
 sbw_pkg_repo="https://github.com/sbwml/openwrt_pkgs"
 natmap_repo="https://github.com/blueberry-pie-11/luci-app-natmap"
 xwrt_repo="https://github.com/QiuSimons/openwrt-natflow"
+rooter_repo="https://github.com/ofmodemsandmen/SourceMaster"
 
 # 开始克隆仓库，并行执行
 clone_repo $openwrt_repo $latest_release openwrt &
@@ -61,9 +62,11 @@ clone_repo $openwrt_pkg_repo master openwrt_pkg_ma &
 clone_repo $openwrt_add_repo master OpenWrt-Add &
 clone_repo $dockerman_repo master dockerman &
 clone_repo $docker_lib_repo master docker_lib &
+clone_repo $rooter_repo master rooter &
+
 # 等待所有后台任务完成
 wait
-
+cp -rf ./rooter/package/root* ./openwrt/package/
 # 进行一些处理
 #find openwrt/package/* -maxdepth 0 ! -name 'firmware' ! -name 'kernel' ! -name 'base-files' ! -name 'Makefile' -exec rm -rf {} +
 #rm -rf ./openwrt_snap/package/firmware ./openwrt_snap/package/kernel ./openwrt_snap/package/base-files ./openwrt_snap/package/Makefile
