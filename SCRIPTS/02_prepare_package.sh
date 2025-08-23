@@ -163,7 +163,7 @@ cp -rf ../OpenWrt-Add/feeds_packages_lang_node-prebuilt ./feeds/packages/lang/no
 rm -rf ./feeds/packages/lang/golang
 cp -rf ../lede_pkg_ma/lang/golang ./feeds/packages/lang/golang
 # rust
-wget https://github.com/rust-lang/rust/commit/e8d97f0.patch -O feeds/packages/lang/rust/patches/e8d97f0.patch
+#wget https://github.com/rust-lang/rust/commit/e8d97f0.patch -O feeds/packages/lang/rust/patches/e8d97f0.patch
 # mount cgroupv2
 pushd feeds/packages
 patch -p1 <../../../PATCH/pkgs/cgroupfs-mount/0001-fix-cgroupfs-mount.patch
