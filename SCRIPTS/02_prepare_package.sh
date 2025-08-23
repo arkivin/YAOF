@@ -165,7 +165,7 @@ cp -rf ../lede_pkg_ma/lang/golang ./feeds/packages/lang/golang
 # rust
 sed -i '/download-ci-llvm/d' feeds/packages/lang/rust/files/config.toml
 sed -i '/^\[llvm\]/a download-ci-llvm = false' feeds/packages/lang/rust/files/config.toml
-wget https://github.com/rust-lang/rust/commit/e8d97f0.patch -O feeds/packages/lang/rust/patches/e8d97f0.patch
+#wget https://github.com/rust-lang/rust/commit/e8d97f0.patch -O feeds/packages/lang/rust/patches/e8d97f0.patch
 # mount cgroupv2
 pushd feeds/packages
 patch -p1 <../../../PATCH/pkgs/cgroupfs-mount/0001-fix-cgroupfs-mount.patch
