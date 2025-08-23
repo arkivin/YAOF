@@ -77,6 +77,7 @@ jobs:
     - name: Make Config
       working-directory: ${{ github.workspace }}/openwrt
       run: |
+        sed -i -E 's/(^|[[:space:]:+=])vpn-policy-routing([[:space:]]|$)/\1pbr\2/g' package/rooter/0routerspecfic/vpnpolicy/Makefile
         make defconfig
     - name: Get Architecture
       working-directory: ${{ github.workspace }}/openwrt
